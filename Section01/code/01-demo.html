@@ -1,0 +1,36 @@
+<!--
+    載入 Vue.js 方式一: 通過script tag引入
+                       1. 引入vue.js library
+                       2. 創建一個tag
+                       3. 創建一個vue object
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 1. 引入vue lib -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2.create a tag -->
+    <div id="app">
+        {{message}}
+    </div>
+
+    <script type="text/javascript">
+        //<!-- 3.create vue object -->
+        var app = new Vue({
+            el: "#app",    // vue object root
+            data: {        // 頁面所須要顯示的數據
+                message: "hello vue",
+                haha: '哈哈'
+            } 
+        });
+        console.table(app);
+
+    </script>
+</body>
+</html>
