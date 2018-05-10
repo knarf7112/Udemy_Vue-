@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "vue-cli": "^2.9.3"
   }
 }
