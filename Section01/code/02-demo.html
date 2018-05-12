@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 1. 引入vue lib -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue模板指令: 數據瑄染</title>
+</head>
+<body>
+    <!-- 2.create a tag -->
+    <div id="app">
+        <!-- 4. 數據渲染 v-text, v-html -->
+        <p v-text="message">v-text模板指定用來告訴頁面元素要渲染的textContent內容為message屬性值</p>
+        <p v-text="title">這是用來比較v-text和v-html的差別</p>
+        <p v-html="title">v-html模板指定用來告訴頁面元素要渲染的innerHTML內容為title屬性值</p>
+        <!--<p v-text="fn()">測試看看用function會怎樣,結論:v-text就是執行屬性的toString方法</p>-->
+        <p v-html="fn()">測試看看用function會怎樣,結論:v-html就是執行屬性的toString方法</p>
+
+
+        <!-- 5. 控制模快顯示隱藏 v-if, v-show -->
+        <p v-if="isShow"> v-if : 當為false時,就不會進行渲染,所以document不會有此元素 </p>
+        <p v-show="isShow"> v-show: 當為false時,仍會渲染至畫面,但會將元素的inline style的display: none </p>
+
+
+        <!-- 6. 渲染循環列表 v-for -->
+        <ul>列表渲染:
+            <!-- 類似 for-in 寫法 -->
+            <li v-for="item in list">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        //<!-- 3.create vue object -->
+        var app = new Vue({
+            el: "#app",    // el:   vue object的掛載點(綁定在哪個元素上)
+            data: {        // data: vue object所持有的數據(通常用來render用)
+                message: "hello vue",
+                title: '<h2>指令學習</h2>',
+                fn: function(){ console.trace('fn');return 'qoo'; },
+                isShow: false,
+                list: ['1. HTML', '2. CSS', '3. JavaScript']
+            } 
+        });
+        //console.table(app);
+
+    </script>
+</body>
+</html>

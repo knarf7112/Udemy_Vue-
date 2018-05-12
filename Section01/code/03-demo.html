@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 1. 引入vue lib -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue模板指令: 事件</title>
+    <style type="text/css">
+        .show {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .view {
+            width: 300px;
+            height: 30px;
+            border: 1px solid gray;
+            margin: 20px auto;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .active {
+            background: red;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 2.create a tag -->
+    <div id="app">
+        <!-- 5. 事件綁定 v-on:event名稱 -->
+        <p class="show" v-on:click="speak">點擊後會觸發speak方法</p>
+        <p class="show" @click="speak">事件的另一種簡寫方式</p>
+
+
+        <!-- 6. 屬性綁定 v-bind -->
+        <!-- 使用v-bind:attribute名稱,就可以將data物件所指定的屬性與元素的attribute綁定  -->
+        <img v-bind:src="imgList[1]" />
+        <img v-bind:src="imgList[0]" />
+        <!-- 也可以使用簡寫方式 -->
+        <img :src="imgList[0]" :title="titleMsg" />
+
+
+        <!-- 7. 樣式綁定 v-bind 或簡寫 : -->
+        <!-- isActive為真,即給該div添加一個class名稱,反之則不添加 -->
+        <div class="view" v-bind:class="{ 'active' : isActive }"> {{ message }}</div>
+        <button v-on:click="isActive=!isActive">測試樣式綁定true/false</button>
+    </div>
+</body>
+    <script type="text/javascript">
+        //<!-- 3.create vue object -->
+        var app = new Vue({
+            el: "#app",    // el:   vue object的掛載點(綁定在哪個元素上)
+            data: {        // data: vue object所持有的數據(通常用來render用)
+                imgList: ['img/quicksort.gif', 'img/wiki.png'],
+                titleMsg: ' : 加上attribute就是v-bind的簡寫方式',
+
+                message: 'vue入門之模板指令練習',
+                isActive: true
+            },
+            methods: { // methods: 此vue object的方法列表
+                speak: function(arg1) {
+                    console.trace('click event', arg1);
+                    alert('hello');
+                }
+            }
+        });
+        //console.table(app);
+
+    </script>
+</html>
