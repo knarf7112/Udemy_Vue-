@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 1. 引入vue lib -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue模板指令: 雙向數據綁定</title>
+</head>
+<body>
+    <!-- 2.create a tag -->
+    <div id="app">
+        <!-- 4. 雙向數據綁定 v-model -->
+        <!-- 當model內容變化,title屬性值跟者變化 -->
+        <input v-model="title" type="text">
+        <p>{{ title }}</p>
+    </div>
+</body>
+    <script type="text/javascript">
+        //<!-- 3.create vue object -->
+        var app = new Vue({
+            el: "#app",    // el:   vue object的掛載點(綁定在哪個元素上)
+            data: {        // data: vue object所持有的數據(通常用來render用)
+                title: 'Vue入門',
+            },
+            methods: { // methods: 此vue object的方法列表
+
+            }
+        });
+        //console.table(app);
+
+    </script>
+</html>
